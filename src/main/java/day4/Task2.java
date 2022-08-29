@@ -7,7 +7,8 @@ public class Task2 {
         int[] array = new int[100];
 
         for (int i = 0; i < array.length; i++) {
-            array[i] = (int) Math.ceil((Math.random() * 9999));
+            array[i] = next(i+1);
+
         }
         System.out.println(Arrays.toString(array));
 
@@ -39,5 +40,11 @@ public class Task2 {
         }
         System.out.println("количество элементов массива, оканчивающихся на " + c);
         System.out.println("сумму элементов массива, оканчивающихся на " + sum);
+    }
+
+    public static int next(long seed) {
+        int bits = 16;
+        seed = (seed * 0x5DEECE66DL + 0xBL) & ((1L << 48) - 1);
+        return (int) (seed >>> (48 - bits));
     }
 }
